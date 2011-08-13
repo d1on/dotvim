@@ -63,6 +63,14 @@ au FocusLost * :wa
 syntax enable "Enable syntax hl
 
 if has("gui_running")
+  " remove scroll bars and tool bar
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+  " expand width in fullscreen
+  set fuoptions=maxvert,maxhorz
+  " hide tab bar
+  set showtabline=0
   set colorcolumn=80
   set undofile
   set relativenumber
@@ -97,6 +105,7 @@ noremap <leader>a :Ack<space>
 noremap <leader>, :NERDTreeToggle<cr>
 inoremap kj <Esc>
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L] 
+set NERDTreeShowLineNumbers=1
 
 " Open an new vertical split and switch over to it
 nnoremap <leader>w <C-w>v,C-w>l

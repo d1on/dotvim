@@ -97,7 +97,9 @@ endif
 map <space> /
 map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
-
+" Swap ; and :  Convenient.
+nnoremap ; :
+nnoremap : ;
 " remap Ack toggle
 noremap <leader>a :Ack<space>
 
@@ -105,7 +107,6 @@ noremap <leader>a :Ack<space>
 noremap <leader>, :NERDTreeToggle<cr>
 inoremap kj <Esc>
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L] 
-set NERDTreeShowLineNumbers=1
 
 " Open an new vertical split and switch over to it
 nnoremap <leader>w <C-w>v,C-w>l

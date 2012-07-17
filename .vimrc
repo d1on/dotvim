@@ -1,4 +1,5 @@
 " Load Pathogen
+set rtp+=/usr/local/go/misc/vim
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
@@ -70,7 +71,7 @@ if has("gui_running")
   " expand width in fullscreen
   set fuoptions=maxvert,maxhorz
   " hide tab bar
-  set showtabline=0
+  "set showtabline=0
   set colorcolumn=80
   set undofile
   set relativenumber
@@ -81,8 +82,20 @@ if has("gui_running")
   colorscheme solarized
   set nonu
 else
-  colorscheme solarized
+  " remove scroll bars and tool bar
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+  " hide tab bar
+  "set showtabline=0
+  set colorcolumn=80
+  set undofile
+  set relativenumber
+  set guioptions-=T
+  set t_Co=256
   set background=dark
+  set guifont=Consolas:h12
+  colorscheme solarized
   set nonu
 endif
 
@@ -153,3 +166,13 @@ autocmd BufLeave,FocusLost silent! wall
 " Vim syntax highlighting
 au BufRead, BufNewFile *.json set filetype=json
 au! Syntax json source ~/.vim/syntax/json.vim
+
+" ctrlp settings
+" exclude files/dirs
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.so$\|\.swp$\|\.dll|\.pyc$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
+" use external tool
+"let g:ctrlp_user_command = 'find %s -type f' 

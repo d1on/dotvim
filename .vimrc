@@ -114,9 +114,9 @@ nnoremap ; :
 nnoremap : ;
 " remap Ack toggle
 noremap <leader>a :Ack<space>
-
 " remap NERDTreeToggle
-noremap <leader>, :NERDTreeToggle<cr>
+noremap <leader><space> :NERDTreeToggle<cr>
+"let g:EasyMotion_leader_key = '<leader>''<space>'
 inoremap kj <Esc>
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L] 
 

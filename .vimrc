@@ -39,7 +39,7 @@ set incsearch
 set showmatch
 set hlsearch
 " Remove search highlighting iwth ,<space>
-noremap <leader><space> :noh<cr>
+noremap <leader>. :noh<cr>
 " Match braces with <tab>
 noremap <tab> %
 vnoremap <tab> %
@@ -169,9 +169,9 @@ au! Syntax json source ~/.vim/syntax/json.vim
 " ctrlp settings
 " exclude files/dirs
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.so$\|\.swp$\|\.dll|\.pyc$',
-    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-    \ }
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|pyc|swo|swn|so|swp|un\~|sw.)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 " use external tool
 "let g:ctrlp_user_command = 'find %s -type f' 

@@ -1,11 +1,149 @@
-" Load Pathogen
+set nocompatible "required by vundle
+filetype off "required by vundle
+
+" Vundle
+    " Setting up Vundle - the vim plugin bundler
+        let iCanHazVundle=1
+        let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
+        if !filereadable(vundle_readme) 
+        "if !isdirectory("~/.vim/bundle/vundle")
+            echo "Installing Vundle.."
+            echo ""
+            silent !mkdir -p ~/.vim/bundle
+            silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+            let iCanHazVundle=0
+        endif
+        set rtp+=~/.vim/bundle/vundle/
+        call vundle#rc()
+        Bundle 'gmarik/vundle'
+    " Setting up Vundle - the vim plugin bundler end
+
+    " Bundles
+        " General Vim
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'scrooloose/nerdcommenter'
+            Bundle 'https://github.com/tpope/vim-fugitive.git'
+            Bundle 'https://github.com/Valloric/YouCompleteMe.git'
+            "Bundle 'Command-T'
+            "Bundle 'loremipsum'
+            "Bundle 'majutsushi/tagbar'
+            "Bundle 'taglist.vim'
+            Bundle 'surround.vim'
+            Bundle 'ack.vim'
+            Bundle 'repeat.vim'
+            Bundle 'vim-addon-mw-utils'
+            Bundle 'EasyMotion'
+            Bundle 'snipMate'
+            "Bundle 'snipmate-snippets'
+            Bundle 'YankRing.vim'
+            "Bundle 'mutewinter/vim-indent-guides'
+            "Bundle 'rosenfeld/conque-term'
+            Bundle 'kien/ctrlp.vim'
+            Bundle 'scrooloose/syntastic'
+            "Bundle 'sjl/clam.vim'
+            "Bundle 'peterhoeg/vim-tmux'
+            "Bundle 'benmills/vimux'
+            "Bundle 'Lokaltog/vim-powerline'
+            "Bundle 'mattn/gist-vim'
+            "Bundle 'mattn/webapi-vim'
+            "Bundle 'SearchComplete'
+            "Bundle 'TaskList.vim'
+            "Bundle 'mru.vim'
+        " General Vim end
+    
+        " Color Schemes
+            Bundle 'altercation/vim-colors-solarized'
+"            Bundle 'cschlueter/vim-ir_black'
+"            Bundle 'Zenburn'
+"            Bundle 'werks.vim'
+        " Color Schemes end
+        " Coffeescript 
+            Bundle 'kchmck/vim-coffee-script'
+        " Coffeescript end 
+        " Python
+            "Bundle 'pythoncomplete'
+            "Bundle 'nvie/vim-pyunit'
+            "Bundle 'Pydiction'
+            "Bundle 'alfredodeza/pytest.vim'
+            "Bundle 'fs111/pydoc.vim'
+            "Bundle 'nvie/vim-pep9'
+            "Bundle 'nvie/vim-pyflakes'
+            "Bundle 'olethanh/Vim-nosecompiler'
+            "Bundle 'rope-vim'
+            "Bundle 'klen/python-mode'
+        " Python end
+    
+        " Web (generic)
+            Bundle 'mattn/zencoding-vim'
+            "Bundle 'HTML-AutoCloseTag'
+            "Bundle 'juvenn/mustache.vim'
+"            Bundle 'groenewege/vim-less'
+            "Bundle 'Rykka/colorv.vim'
+            "Bundle 'gregsexton/MatchTag'
+            "Bundle 'wavded/vim-stylus'
+            "Bundle 'JavaScript-Indent'
+            "Bundle 'tangledhelix/vim-octopress'
+"            Bundle 'tpope/vim-haml'
+        " Web (generic) end
+    
+        " Javascript / node / coffeescript 
+            "Bundle 'pangloss/vim-javascript'
+            "Bundle 'itspriddle/vim-jquery'
+            "Bundle 'digitaltoad/vim-jade'
+            "Bundle 'leshill/vim-json'
+            "Bundle 'kchmck/vim-coffee-script'
+            "Bundle 'walm/jshint.vim'
+            "Bundle 'mmalecki/vim-node.js'
+            "Bundle 'lambdalisue/nodeunit.vim'
+        " Javascript / node /coffeescript end
+    
+        " C# / .Niet
+    
+        " C# / .Niet end
+        
+        " Java
+        "
+        " Java end
+
+        " Scala
+"            Bundle 'derekwyatt/vim-scala'
+        " Scala End
+    
+        " Misc
+            "Bundle 'vim-scripts/nginx.vim'
+            "Bundle 'uguu-org/vim-matrix-screensaver'
+        " Misc end
+
+
+        " Dash 
+            Bundle 'rizzatti/funcoo.vim'
+            Bundle 'rizzatti/dash.vim'
+        " Dash end
+   
+        " Unused (for now)
+            "Bundle 'bash-support.vim'
+            "Bundle 'SuperTab'
+            "Bundle 'dickeytk/status.vim'
+            "Bundle 'snipMate'
+            "Bundle 'tpope/vim-haml'
+            "Bundle 'Lokaltog/vim-easymotion'
+            "Bundle 'kana/vim-smartinput'
+            "Bundle 'sjl/gundo.vim'
+            "Bundle 'int3/vim-taglist-plus'
+            "Bundle 'reinh/vim-makegreen'
+            "Bundle 'flomotlik/vim-livereload'
+        " Unused (for now) end
+    " Bundles end
+    if iCanHazVundle == 0
+        echo "Installing Bundles, please ignore key map error messages"
+        echo ""
+    :BundleInstall
+    endif
+" Vundle end
 set rtp+=/usr/local/go/misc/vim
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-filetype off
 set t_Co=256
 syntax enable
+filetype plugin indent on
 set nocompatible
 set modelines=0
 
@@ -56,7 +194,8 @@ set formatoptions=qrn1
 " Save on losing focus
 au FocusLost * :wa
 
-
+" Dash Search https://vim-doc.heroku.com/view?https://raw.github.com/rizzatti/dash.vim/master/doc/dash.txt
+:nmap <silent> <leader>d <Plug>DashSearch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -78,7 +217,7 @@ if has("gui_running")
   set guioptions-=T
   set t_Co=256
   set background=dark
-  set guifont=Consolas:h12
+  set guifont=Source\ Code\ Pro:h12
   colorscheme solarized
   set nonu
 else
@@ -94,7 +233,7 @@ else
   set guioptions-=T
   set t_Co=256
   set background=dark
-  set guifont=Consolas:h12
+  set guifont=Source\ Code\ Pro:h12
   colorscheme solarized
   set nonu
 endif
